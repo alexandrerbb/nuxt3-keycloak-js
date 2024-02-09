@@ -8,7 +8,7 @@ export default defineNuxtPlugin({
     /**
      * Fix router issue, see : https://github.com/keycloak/keycloak/issues/14742
      */
-    async "app:created"() {
+    "app:created"() {
       
       const router = useRouter();
       // Here i'm using remeda, you can use you own logic.
