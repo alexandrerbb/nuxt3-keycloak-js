@@ -1,11 +1,19 @@
 <script setup lang="ts">
 const { $keycloak } = useNuxtApp();
-const logout = () => $keycloak.logout({ redirectUri: useRelativeRoute("") });
+
+const login = () => {
+  $keycloak.login()
+}
+
+const logout = () => {
+  $keycloak.logout({ redirectUri: location.origin + "/" });
+}
+
 </script>
 
 <template>
   <div>
     <button @click="logout" v-if="$keycloak.authenticated">Logout</button>
-    <button @click="$keycloak.login" v-else>Login</button>
+    <button @click="login" v-else>Login</button>
   </div>
 </template>
